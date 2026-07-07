@@ -1,0 +1,28 @@
+version: "3.3"
+
+services:
+  auth-service:
+    build: ./authentification-srvc
+    image: ${REGISTRY}/auth-service:${VERSION_TAG}
+    ports:
+      - "5001:5001"
+    env_file:
+      - ./authentification-srvc/.env
+
+
+  task-service:
+    build: ./task-srvc
+    image: ${REGISTRY}/task-service:${VERSION_TAG}
+    ports:
+      - "5002:5002"
+    env_file:
+      - ./task-srvc/.env
+
+
+  frontend:
+    build: ./frontend-srvc
+    image: ${REGISTRY}/frontend:${VERSION_TAG}
+    ports:
+      - "5173:5173"
+    env_file:
+    - ./frontend-srvc/.env

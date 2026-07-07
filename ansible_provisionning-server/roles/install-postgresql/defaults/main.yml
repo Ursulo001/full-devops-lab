@@ -1,0 +1,4 @@
+---
+# defaults file for isntall-postgresql
+
+pg_version: "14"  #version du postgres a installer 

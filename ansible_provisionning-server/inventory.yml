@@ -1,0 +1,37 @@
+docker-registry:
+  hosts:
+    192.168.56.12:
+      ansible_user: vagrant
+      ansible_ssh_private_key_file: /home/ursulo/final_lab/VR_server/registry/.vagrant/machines/default/virtualbox/private_key
+
+database-server:
+  hosts:
+    192.168.56.13:
+      ansible_user: vagrant
+      ansible_ssh_private_key_file: /home/ursulo/final_lab/VR_server/database/.vagrant/machines/default/virtualbox/private_key
+
+
+stage:
+  hosts:
+    192.168.56.14:
+      ansible_user: vagrant
+      ansible_ssh_private_key_file: /home/ursulo/final_lab/VR_server/stage/.vagrant/machines/default/virtualbox/private_key
+
+
+server-jenkins:
+  hosts:
+    192.168.56.11:
+      ansible_user: vagrant
+      ansible_ssh_private_key_file: /home/ursulo/final_lab/VR_server/jenkins/.vagrant/machines/default/virtualbox/private_key
+
+gitlab:
+  hosts:
+    192.168.56.10:
+      ansible_user: vagrant
+      ansible_ssh_private_key_file: /home/ursulo/final_lab/VR_server/gitlab/.vagrant/machines/default/virtualbox/private_key
+
+prod-server:
+  hosts:
+    192.168.56.1:
+      ansible_user: vagrant
+      ansible_ssh_private_key_file: /home/ursulo/final_lab/VR_server/gitlab/.vagrant/machines/default/virtualbox/private_key

@@ -1,0 +1,10 @@
+version: "3.3"
+
+services:
+  auth-service:
+    build: .
+    image: ${REGISTRY}/auth-service:${VERSION_TAG}
+    ports:
+      - "5001:5001"
+    env_file:
+      - ./.env

@@ -1,0 +1,36 @@
+
+
+- name: Installer PostgreSQL et ses dépendances
+  become: yes
+  ansible.builtin.apt:
+    name:
+      - postgresql
+      - postgresql-client
+      - postgresql-contrib
+    state: present
+    update_cache: yes
+
+- name: Démarrer et activer le service PostgreSQL
+  become: yes
+  ansible.builtin.service:
+    name: postgresql
+    state: started
+    enabled: yes
+
+- name: Autoriser les connexions distantes dans postgresql.conf
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /etc/postgresql/{{ pg_version }}/main/postgresql.conf  #version a definir dans defaults/main.yml
+    regexp: "^#?listen_addresses"
+    line: "listen_addresses = '*'"
+    backup: yes
+  notify: Restart PostgreSQL
+
+- name: Autoriser les connexions distantes dans pg_hba.conf
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /etc/postgresql/{{ pg_version }}/main/pg_hba.conf
+    line: "host    all    all    0.0.0.0/0    md5"
+    state: present
+    backup: yes
+  notify: Restart PostgreSQL

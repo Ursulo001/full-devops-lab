@@ -1,0 +1,4 @@
+- name: install-database
+  hosts: database-server
+  roles:
+    - install-mysql

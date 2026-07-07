@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  namespace: task-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: ${REGISTRY}/frontend:${VERSION_TAG}
+          ports:
+            - containerPort: 5173
+          env:
+            - name: VITE_AUTH_API
+              value: "http://auth-service:5001"
+            - name: VITE_TASK_API
+              value: "http://task-service:5002"

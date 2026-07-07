@@ -1,0 +1,10 @@
+version: "3.3"
+
+services:
+  task-service:
+    build: .
+    image: ${REGISTRY}/task-service:${VERSION_TAG}
+    ports:
+      - "5002:5002"
+    env_file:
+      - ./.env

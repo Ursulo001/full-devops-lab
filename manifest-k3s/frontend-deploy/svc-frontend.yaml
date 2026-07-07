@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+  namespace: task-app
+spec:
+  selector:
+    app: frontend
+  ports:
+    - protocol: TCP
+      port: 5173          # port interne du service (Vite)
+      targetPort: 5173    # port exposé par le container
+  type: ClusterIP 

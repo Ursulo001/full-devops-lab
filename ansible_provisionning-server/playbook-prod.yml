@@ -1,0 +1,4 @@
+- name: install-K3s
+  hosts: stage
+  roles:
+    - install-k3s

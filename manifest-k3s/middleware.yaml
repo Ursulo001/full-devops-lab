@@ -1,0 +1,11 @@
+# middleware-strip.yaml
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: strip-api
+  namespace: task-app
+spec:
+  stripPrefix:
+    prefixes:
+      - /api/auth
+      - /api/task

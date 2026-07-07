@@ -1,0 +1,4 @@
+db_user: "{{ db_user }}"
+db_password: "userpassword"
+db_root_password: "rootpswd"
+

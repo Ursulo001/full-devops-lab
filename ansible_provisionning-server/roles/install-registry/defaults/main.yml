@@ -1,0 +1,8 @@
+---
+# defaults file for install-registry
+registry_port: 5000
+registry_data_dir: /var/lib/registry
+registry_auth_dir: /opt/registry/auth
+registry_insecure_ip: "192.168.56.12:5000"
+registry_admin_user: admin
+registry_admin_password: "lab_pswd"   # idéalement à passer via vault

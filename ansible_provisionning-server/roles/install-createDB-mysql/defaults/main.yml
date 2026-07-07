@@ -1,0 +1,20 @@
+---
+mariadb_bind_address: "0.0.0.0"
+
+mariadb_root_password: "pswd_root"
+
+mariadb_databases:
+  - name: taskmanager_staging
+  - name: taskmanager_prod
+
+mariadb_users:
+  - name: taskmanager_staging_user
+    password: "pswd_staging"
+    db: taskmanager_staging
+    host: "%"
+    priv: "taskmanager_staging.*:ALL"
+  - name: taskmanager_prod_user
+    password: "pswd_prod"
+    db: taskmanager_prod
+    host: "%"
+    priv: "taskmanager_prod.*:ALL"

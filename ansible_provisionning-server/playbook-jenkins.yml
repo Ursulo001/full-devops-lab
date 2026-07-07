@@ -1,0 +1,4 @@
+- name: isntall jenkins
+  hosts: server-jenkins
+  roles:
+    - install-docker

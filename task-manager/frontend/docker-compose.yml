@@ -1,0 +1,10 @@
+version: "3.3"
+
+services:
+  frontend:
+    build: .
+    image: ${REGISTRY}/frontend:${VERSION_TAG}
+    ports:
+      - "5173:5173"
+    env_file:
+    - ./.env

@@ -1,0 +1,51 @@
+---
+# tasks file for install-gitlab
+
+- name: Installer les dépendances
+  become: yes
+  ansible.builtin.apt:
+    name:
+      - curl
+      - openssh-server
+      - ca-certificates
+      - tzdata
+      - perl
+    state: present
+    update_cache: true
+
+- name: Ajouter le dépôt GitLab CE
+  become: yes
+  ansible.builtin.shell: |
+    curl -fsSL https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | bash
+  args:
+    creates: /etc/apt/sources.list.d/gitlab_gitlab-ce.list
+
+- name: Installer GitLab CE
+  become: yes
+  ansible.builtin.apt:
+    name: gitlab-ce
+    state: present
+    update_cache: true
+  environment:
+    EXTERNAL_URL: "http://192.168.56.10"
+
+- name: Configurer GitLab
+  become: yes
+  ansible.builtin.command: gitlab-ctl reconfigure
+  changed_when: false
+
+- name: Attendre que GitLab génère le mot de passe initial
+  become: yes
+  ansible.builtin.wait_for:
+    path: /etc/gitlab/initial_root_password
+    timeout: 300
+
+- name: Lire le mot de passe root initial
+  become: yes
+  ansible.builtin.slurp:
+    src: /etc/gitlab/initial_root_password
+  register: gitlab_password_file
+
+- name: Afficher le mot de passe root initial
+  ansible.builtin.debug:
+    msg: "Mot de passe root GitLab : {{ gitlab_password_file.content | b64decode | trim }}"

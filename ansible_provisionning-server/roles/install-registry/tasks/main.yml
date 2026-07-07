@@ -1,0 +1,52 @@
+---
+# tasks file for install-registry
+
+- name: Créer dossier auth
+  become: yes
+  ansible.builtin.file:
+    path: "{{ registry_auth_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Créer dossier data registry
+  become: yes
+  ansible.builtin.file:
+    path: "{{ registry_data_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Générer htpasswd pour registry
+  become: yes
+  ansible.builtin.shell: |
+    docker run --rm httpd:2 htpasswd -Bbn {{ registry_admin_user }} {{ registry_admin_password }}
+  register: htpasswd_output
+
+- name: Écrire fichier htpasswd
+  become: yes
+  ansible.builtin.copy:
+    dest: "{{ registry_auth_dir }}/htpasswd"
+    content: "{{ htpasswd_output.stdout }}\n"
+    mode: '0644'
+
+- name: Lancer le conteneur Docker Registry avec authentification
+  become: yes
+  community.docker.docker_container:
+    name: registry
+    image: registry:2
+    state: started
+    restart_policy: always
+    ports:
+      - "{{ registry_port }}:5000"
+    volumes:
+      - "{{ registry_data_dir }}:/var/lib/registry"
+      - "{{ registry_auth_dir }}:/auth"
+    env:
+      REGISTRY_AUTH: "htpasswd"
+      REGISTRY_AUTH_HTPASSWD_REALM: "Registry Realm"
+      REGISTRY_AUTH_HTPASSWD_PATH: "/auth/htpasswd"
+
+- name: Restart registry si auth change
+  become: yes
+  community.docker.docker_container:
+    name: registry
+    restart: yes
