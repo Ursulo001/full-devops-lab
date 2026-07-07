@@ -345,4 +345,4 @@ ansible-playbook -i inventory.yml playbook-stage.yml
 
 ## 👤 Auteur
 
-Projet réalisé et documenté par **Ursulo**, dans le cadre d'un lab DevOps personnel visant des postes SysAdmin/DevOps/SRE junior en remote.
+**Ursulo**
