@@ -1,4 +1,4 @@
-# 🚀 Todo Task Manager — Full DevOps Lab
+#  Todo Task Manager — Full DevOps Lab
 
 [![Vagrant](https://img.shields.io/badge/Vagrant-VirtualBox-1868F2?logo=vagrant&logoColor=white)]()
 [![Ansible](https://img.shields.io/badge/Ansible-2.14%2B-EE0000?logo=ansible&logoColor=white)]()
@@ -9,7 +9,7 @@
 
 > 🇫🇷 [Lire ce README en français](./README.fr.md)
 
-## 📌 Overview
+##  Overview
 
 This repository documents an **end-to-end DevOps lab**, built entirely from scratch: from spinning up virtual machines to continuously deploying a microservices application on Kubernetes (K3s), including automated provisioning (Ansible), continuous integration (Jenkins), and a private Docker registry.
 
@@ -24,7 +24,7 @@ Unit tests are written with **Jest**.
 
 ---
 
-## 🏗️ Lab Architecture
+##  Lab Architecture
 
 All machines communicate over a private `192.168.56.0/24` network (VirtualBox host-only):
 
@@ -53,7 +53,7 @@ All machines communicate over a private `192.168.56.0/24` network (VirtualBox ho
 
 ---
 
-## 📦 Repository Structure
+##  Repository Structure
 
 The project is deliberately **split across multiple independent repositories** (rather than a monorepo), to reflect real-world DevOps practices: targeted deployments, independent CI/CD per service, and clear separation of concerns.
 
@@ -73,7 +73,7 @@ Each application repository (`authentification-srvc`, `task-srvc`, `frontend-srv
 
 ---
 
-## 🧰 Tech Stack
+##  Tech Stack
 
 | Category | Technology |
 |---|---|
@@ -91,7 +91,7 @@ Each application repository (`authentification-srvc`, `task-srvc`, `frontend-srv
 
 ---
 
-## ⚙️ 1. Virtual Machine Provisioning (Vagrant)
+##  1. Virtual Machine Provisioning (Vagrant)
 
 ```
 VR_server
@@ -113,7 +113,7 @@ vagrant ssh-config    # retrieve SSH config (used by Ansible)
 
 ---
 
-## 🔧 2. Automated Provisioning (Ansible)
+##  2. Automated Provisioning (Ansible)
 
 ```
 ansible_provisionning-server
@@ -181,7 +181,7 @@ This separation prevents any interference between test data and real data, and a
 
 ---
 
-## 🔁 3. CI/CD — Jenkins & GitLab CE
+##  3. CI/CD — Jenkins & GitLab CE
 
 ### GitLab configuration
 
@@ -220,7 +220,7 @@ On every push, GitLab notifies Jenkins, which automatically triggers the pipelin
 
 ---
 
-## 🐳 4. Private Docker Registry & K3s Integration
+##  4. Private Docker Registry & K3s Integration
 
 ### Jenkins → Registry configuration
 
@@ -278,7 +278,7 @@ Required plugin: **Kubernetes CLI Plugin** (provides `withKubeConfig`).
 
 ---
 
-## 📄 5. Kubernetes Deployment — `manifest-k3s`
+##  5. Kubernetes Deployment — `manifest-k3s`
 
 ```
 manifest-k3s
@@ -303,7 +303,7 @@ manifest-k3s
 
 ---
 
-## 🧩 Technical Challenges & Decisions
+##  Technical Challenges & Decisions
 
 This section documents the real problems encountered — and how they were solved.
 
@@ -315,7 +315,7 @@ This section documents the real problems encountered — and how they were solve
 
 ---
 
-## 🚦 Getting Started
+##  Getting Started
 
 ```bash
 # 1. Provision the VMs
@@ -335,7 +335,7 @@ ansible-playbook -i inventory.yml playbook-stage.yml
 
 ---
 
-## 🗺️ Roadmap
+##  Roadmap
 
 - [ ] Observability (Prometheus + Grafana) — **planned as a separate project**, not integrated into this lab yet.
 - [ ] Add end-to-end integration tests.
@@ -343,6 +343,6 @@ ansible-playbook -i inventory.yml playbook-stage.yml
 
 ---
 
-## 👤 Author
+##  Author
 
 **Ursulo**
