@@ -1,4 +1,4 @@
-# 🚀 Todo Task Manager — Lab DevOps Complet
+#  Todo Task Manager — Lab DevOps Complet
 
 [![Vagrant](https://img.shields.io/badge/Vagrant-VirtualBox-1868F2?logo=vagrant&logoColor=white)]()
 [![Ansible](https://img.shields.io/badge/Ansible-2.14%2B-EE0000?logo=ansible&logoColor=white)]()
@@ -9,7 +9,7 @@
 
 > 🇬🇧 [Read this README in English](./README.en.md)
 
-## 📌 Vue d'ensemble
+##  Vue d'ensemble
 
 Ce dépôt documente un **lab DevOps de bout en bout**, construit entièrement à la main : de la création des machines virtuelles jusqu'au déploiement continu d'une application microservices sur Kubernetes (K3s), en passant par le provisionnement automatisé (Ansible), l'intégration continue (Jenkins) et un registre Docker privé.
 
@@ -24,7 +24,7 @@ Tests unitaires réalisés avec **Jest**.
 
 ---
 
-## 🏗️ Architecture du lab
+##  Architecture du lab
 
 Toutes les machines communiquent sur un réseau privé `192.168.56.0/24` (host-only VirtualBox) :
 
@@ -53,7 +53,7 @@ Toutes les machines communiquent sur un réseau privé `192.168.56.0/24` (host-o
 
 ---
 
-## 📦 Structure des dépôts
+##  Structure des dépôts
 
 Le projet est volontairement **découpé en plusieurs dépôts indépendants** (plutôt qu'un monorepo), pour refléter des pratiques DevOps réelles : déploiement ciblé, CI/CD indépendante par service, séparation claire des responsabilités.
 
@@ -73,7 +73,7 @@ Chaque dépôt applicatif (`authentification-srvc`, `task-srvc`, `frontend-srvc`
 
 ---
 
-## 🧰 Stack technique
+##  Stack technique
 
 | Catégorie | Technologie |
 |---|---|
@@ -91,7 +91,7 @@ Chaque dépôt applicatif (`authentification-srvc`, `task-srvc`, `frontend-srvc`
 
 ---
 
-## ⚙️ 1. Provisionnement des machines virtuelles (Vagrant)
+##  1. Provisionnement des machines virtuelles (Vagrant)
 
 ```
 VR_server
@@ -113,7 +113,7 @@ vagrant ssh-config    # récupérer la config SSH (utile pour Ansible)
 
 ---
 
-## 🔧 2. Provisionnement automatisé (Ansible)
+##  2. Provisionnement automatisé (Ansible)
 
 ```
 ansible_provisionning-server
@@ -181,7 +181,7 @@ Cette séparation évite toute interférence entre les données de test et les d
 
 ---
 
-## 🔁 3. CI/CD — Jenkins & GitLab CE
+##  3. CI/CD — Jenkins & GitLab CE
 
 ### Configuration GitLab
 
@@ -220,7 +220,7 @@ Dans chaque dépôt GitLab : **Settings → Webhooks → Add new webhook**
 
 ---
 
-## 🐳 4. Registre Docker privé & intégration K3s
+##  4. Registre Docker privé & intégration K3s
 
 ### Configuration Jenkins → Registry
 
@@ -303,7 +303,7 @@ manifest-k3s
 
 ---
 
-## 🧩 Défis techniques & décisions
+##  Défis techniques & décisions
 
 Cette section documente les problèmes réels rencontrés — et comment ils ont été résolus.
 
@@ -315,7 +315,7 @@ Cette section documente les problèmes réels rencontrés — et comment ils ont
 
 ---
 
-## 🚦 Démarrage rapide
+##  Démarrage rapide
 
 ```bash
 # 1. Provisionner les VMs
@@ -335,7 +335,7 @@ ansible-playbook -i inventory.yml playbook-stage.yml
 
 ---
 
-## 🗺️ Roadmap
+##  Roadmap
 
 - [ ] Observabilité (Prometheus + Grafana) — **prévu comme projet séparé**, non intégré à ce lab pour le moment.
 - [ ] Ajout de tests d'intégration end-to-end.
@@ -343,6 +343,6 @@ ansible-playbook -i inventory.yml playbook-stage.yml
 
 ---
 
-## 👤 Auteur
+##  Auteur
 
-**Ursulo**
+**RATOVOMANANA Faharetamihary Ursulo**
